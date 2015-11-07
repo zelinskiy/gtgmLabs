@@ -3,6 +3,8 @@
 
 <head>
 
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 
 	<title>
 		Encyclopedia
@@ -10,87 +12,113 @@
 
 	<meta charset="utf-8">
 
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oranienbaum">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Special Elite">
 
 	<style type="text/css">
 
-		body{
-			width:100%;
+
+
+		html, body {
+			margin:0;
+			padding:0;
 			height:100%;
-			background-color: white;
-			color:black;
 		}
 
-		h1 {
-			text-align:center;
+		h2 {
+			color: #3737B3;
+			padding-left: 25px;
 		}
 
+		h4 {
+			color: #3737B3;
+			padding-left: 25px;
+		}
 		em {
-			color:#2434E8;
+			color:#2213CF;
 		}
 
 		#container {
-			width:100%;
-		
+		font-family: "Oranienbaum";
+		height:100%;
 		}
+
 		#sidebar {
-			margin: 10px;
+		border:2px solid black;
+		float:left;
+		width:15%;
+
+		}
+
+		#sidebar a:link { color: black; text-decoration:none }
+		#sidebar a:visited { color: black; }
+		#sidebar a:hover { color: orange; }
+		#sidebar a:active { color: black; }
+
+		#sidebar p {
+			padding-left: 15px;
+			position:relative;
+		}
+
+		
+
+		#content {	
+			padding-right: 10%;
+			padding-bottom: 30%;
 			float:left;
-
-			width:15%;
-			height: 100%;
-		}
-
-		#sidebar a:link {
-			color:black;
-			text-decoration: none;
-		}
-
-		#sidebar a:visited {
-			color:black;
-			text-decoration: none;
-		}
-
-		#sidebar a:hover {
-			color:black;
-			text-decoration: underline;
-		}
-
-		#sidebar a:active {
-			color:black;
-			text-decoration: underline;
-		}
-
-
-		#content {
-			margin: 10px;
-			float:left;
-
-			width:80%;
-			height: 100%;
-
-			font-family: "Times New Roman", Times, serif;
+			width:74%;
 
 		}
-		#separator {
-			float:left;
-			width:2px;
 
-			height: 200px;
-			background-color: red;
+		#content p {
+			padding-left: 15px;
 		}
+		#content img {
 
+    		margin: 10px;
+		}
+		
 
 		#header {
+			background-color: #D1D1D1;
 			width:100%;
-			background-color: red;
-			margin:0px;
+			height: 100px;
+			text-align:center;
+			position: relative
 		}
-		#logo {
-			float:left;
+
+		#header p {			
+			font-family: "Special Elite";
+			font-size:20pt;
+			position: absolute;
+			left:30%;
+			top: 0%;
 		}
-		#main_header {
+		#header img {
+			position: absolute;
+			left:5px;
+			top: 5px;
+			
+		}
+		#line {
+			background-color: black;
+			width:100%;
+			height:2px;		
+		}
+		#separator {
+			background-color: black;
 			float:right;
+			width:2px;
+			height:1000%;
 		}
+		#footer {
+			background-color: blue;
+			width:100%;
+			height: 50px;
+		}
+		
+
+
 
 	</style>
 
@@ -99,55 +127,56 @@
 </head>
 
 <body>
-
 	<div id="header">
+		<a href="index.html"><img height=90px src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Isaac_Asimov_on_Throne.png/220px-Isaac_Asimov_on_Throne.png"/></a>
+		
+		<p>Asimov's Encyclopedia</p>
 
-		<div id="logo">
-			<a href="index.html"><img width=150px src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Isaac_Asimov_on_Throne.png/220px-Isaac_Asimov_on_Throne.png"/></a>
-		</div>
-
-		<h1 id="main_header">Энциклопедия</h1>
+		
 
 	</div>
-
+	<div id="line"></div>
 	<div id="container">
-
 		<div id="sidebar">
 
-			<div id="panel">
-				<h3>Боковая панель</h3>
-				<ul>
-					<li><a href="#introduction">Первое</a></li>
-					<li>Второе</li>
-					<li>Третье</li>
-					<li>Четвертое</li>
-					<li>Пятое</li>
-					<li>Шестое</li>
-					<li>Седьмое</li>
-				</ul>
-			</div>
+			<ul>
+				<li><a href="index.html">Main Page</a></li>
+				<li><a href="index.html">Random article</a></li>
+				<li>Третье</li>
+				<li>Четвертое</li>
+				<li>Пятое</li>
+				<li>Шестое</li>
+				<li>Седьмое</li>
+			</ul>
+			
 
 		</div>
 
 
-		<div id="separator"></div>
-
+		
 
 		<div id="content">
-
-			<h3 id="introduction">Теория категорий</h3>
-
+			
+			<h2>Теория категорий</h2>
 			<p>Многие понятия в Haskell позаимствованы из теории категорий, например это функторы, монады. Теория категорий – это скорее язык, математический жаргон, она настолько общая, что кажется ей нет никакого применения. Возможно это и так, но в этом языке многие сущности, которые лишь казались родственными и было смутное интуитивное ощущение их близости, становятся тождественными.</p>
-
 			<p>Теория категорий занимается описанием функций. В лямбда-исчислении основной операцией была подстановка значения в функцию, а в теории категорий мы сосредоточимся на операции композиции. Мы будем соединять различные объекты так, чтобы структура объектов сохранялась. Структура объекта будет определяться свойствами, которые продолжают выполнятся после преобразования объекта.</p>
-
+			<h4>Категория</h4>
 			<p>Мы будем говорить об объектах и связях между ними. Связи принято называть “стрелками” или “морфизмами”. Далее мы будем пользоваться термином стрелка. У стрелки есть начальный объект, его называют <em>доменом</em> (domain) и конечный объект, его называют <em>кодоменом</em> (codomain).</p>
+			<img src="images/arrow.png" />
+			<p>В этой записи стрелка f соединяет объекты A и B, в тексте мы будем писать это так f:A→B, словно стрелка это функция, а объекты это типы. Мы будем обозначать объекты большими буквами A, B, C, …, а стрелки – маленькими буквами f, g, h, … Для того чтобы связи было интереснее изучать мы введём такое правило:</p>
+			<img src="images/composition.png" />
+			<p>Если конец стрелки f указывает на начало стрелки g, то должна быть такая стрелка f;g, которая обозначает составную стрелку. Вводится специальная операция “точка с запятой”, которая называется композицией стрелок: Это правило говорит о том, что связи распространяются по объектам. Теперь у нас есть не просто объекты и стрелки, а целая сеть объектов, связанных между собой. Тот факт, что связи действительно распространяются отражается свойством:</p>
+			<p>Связи между объектами можно трактовать как преобразования объектов. Стрелка f:A→B – это способ, с помощью которого мы можем перевести объект A в объект B. Композиция в этой аналогии приобретает естественную интерпретацию. Если у нас есть способ f:A→B преобразования объекта A в объект B, и способ g:B→C преобразования объекта B в объект C, то мы конечно можем, применив сначала f, а затем g, получить из объекта A объект C.</p>
+
+			<p><span class="math">\[id_A : A \rightarrow A\]</span></p>
+
+
 		</div> 
-
-
-
-
 	</div>
+
+	<!--div id="footer">
+
+	</div-->
 
 </body>
 
