@@ -23,6 +23,72 @@
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 
+	<style>
+
+	
+
+	#myframe{
+		position:absolute;
+		top: 80px;
+    	right: -180px;
+    	width: 200px;
+    	height: 300px;
+	}
+
+	</style>
+
+	<script>
+
+	var ID
+	var active
+
+	function f(){
+		if (!active)
+			ID= setInterval(floatOn, 5)
+	}
+
+	function g(){
+		if (!active)
+			ID= setInterval(floatOff, 5)
+	}
+
+
+	function floatOn(){
+		active = true
+		console.log("active")
+		if(parseInt(e.style.right) <= 0){
+			e = document.getElementById("myframe")
+			pos = parseInt(e.style.right) + 10 
+			e.style.right = pos.toString() + 'px'
+			console.log(e.style.right)
+		}
+		else{
+			console.log("Shut!")
+			clearInterval(ID)
+			active = false
+		}
+		
+	}
+	function floatOff(){
+		active = true
+		console.log("active")
+		if(parseInt(e.style.right) >= -180){
+			e = document.getElementById("myframe")
+			pos = parseInt(e.style.right) - 10 
+			e.style.right = pos.toString() + 'px'
+			console.log(e.style.right)
+		}
+		else{
+			console.log("Shut!")
+			clearInterval(ID)
+			active = false
+		}
+	}
+
+
+	</script>
+
+
 
 </head>
 
@@ -62,29 +128,26 @@
 		<div id="content">
 			
 			<h2>Привет</h2>			
-			<p>Здесь я буду собирать всякие полезные штуки. Эта энциклопедия названа в честь Айзека Азимова и его цикла "Foundation".</p>
-			
-			<div class="description"><img src="images/seldon.jpg" height=250px/><p>Гэри Селдон</p></div>
+			<iframe id = "myframe" 
+			src="frame.html" 
+			onmouseover="f()"
+			onmouseout="g()">
 
-			<h3>Первые статьи</h3>
-			<ol>
-				<li><a href="cathegory_theory_rus.html">Теория категорий</a></li>
-				<li><a href="cathegory_theory_rus_deprecated.html">Теория категорий- экспериментальная</a></li>
-				<li><a href="testing_no_report.html">Тестик - без отчета на отдельной странице</a></li>
-				<li><a href="testing.html">Тестик - с отчетом на отдельной странице</a></li>
-				<li><a href="second.html">Выплывающий фрейм</a></li>
-			</ol>
+			</iframe>
 
 
 		</div>
 		
-	</div>		
+	</div>	
 	
 
 	
 
 
-
+<script>
+	e = document.getElementById("myframe")
+	e.style.right = "-180px"
+</script>
 
 </body>
 

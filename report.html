@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+	<title>
+		Привет
+	</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oranienbaum">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Special Elite">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+<script>
+
+
+
+
+l = location.toString()
+i = l.indexOf("=")
+l = l.split("").slice(i+1).join("")
+S = l.split(" |&&&| ").map(function(str){return unescape(str)})
+
+
+	
+
+
+
+
+			
+
+</script>
+
+
+
+
+</head>
+
+<body>
+	<div id="header">
+
+		<a href="index.html"><img height=90px src="images/asimov.png"/></a>
+		
+		<p>Asimov's Encyclopedia</p>
+
+	</div>
+
+	<div id="container">
+		<div id="sidebar">
+			<ul>
+				<li><a href="index.html">Main Page</a></li>
+				<li><a href="index.html">Random article</a></li>
+				<li><a href="index.html">News</a></li>
+				<li><a href="index.html">Etc</a></li>
+			</ul>
+
+			<p style="border-top:2px solid grey; padding-top:10px">Читать на другом языке</p>
+			<ul>
+				<li style="color:green"><a href="index.html">Привет</a></li>
+				<li style="color:red"><a href="index.html">Hi</a></li>
+				<li style="color:red"><a href="index.html">Salve</a></li>
+				<li style="color:red"><a href="index.html">Hallo</a></li>
+			</ul>
+
+			
+
+		</div>
+
+
+		
+
+		<div id="content">
+			
+			<h2>Результаты Теста</h2>		
+			
+			
+			
+
+
+			<div id="question">
+				<script>
+				correct = S[S.length-1]
+				S = S.slice(0,S.length - 1)
+				for(i=0; i< S.length; i++){
+					color = S[i].split("").slice(S[i].length - 1).join("")
+					if(color == "g") color = "green"
+					else if(color == "r") color = "red"
+					text = S[i].split("").slice(0,S[i].length - 1).join("")
+					document.write('<p ' + 'style="color:' + color + '">' + text + '</p>')
+				}	
+				document.write("<p> Your Score: " + correct + " of " + S.length + "</p>")				
+				</script>
+
+			</div>
+
+
+			
+
+
+
+		</div>
+		
+	</div>		
+	
+
+	
+
+
+
+
+</body>
+
+</html>	
