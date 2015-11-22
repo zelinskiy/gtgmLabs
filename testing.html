@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+	<title>
+		Привет
+	</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oranienbaum">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Special Elite">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+<script>
+
+Questions = [ 	["Сколько длилась Столетняя Война?",["100", "101", "228", "1488"], [0,2], "check"],
+				["Когда началась Вторая Мировая Война?",["1939", "1941", "1945", "што?"], 3, "radio"],
+				["Какой самый известный самолет на Тихоокеанском театре военных действий?", ["Тигр", "Слоник", "Курлык", "Зеро"], [3], "check"],
+
+]
+
+
+
+ConstantQuestions = Questions
+
+
+Answers = []
+
+
+
+function Next(){
+
+	//Saving answer on previous question
+	options = document.getElementsByName('option')
+	currAnswers = []
+	for (var i = 0; i < options.length; i++) {
+		if (options[i].type == "radio" && options[i].checked) {
+			currAnswers.push(options[i].value)
+		}
+		else if (options[i].type == "checkbox" && options[i].checked) {
+			currAnswers.push(options[i].value)
+		}
+	}
+
+	Answers.push(currAnswers)
+
+	//Are there any questions left?
+	if(Questions.length == 0){
+		Finish()
+		return 0
+	}
+
+	//Shifting question from Questions list
+	currQuestion = Questions[0][0]
+	currChoices = Questions[0][1]
+	typeOfQuestion = Questions[0][3]
+	Questions=Questions.slice(1)
+
+
+	/*=======================*/
+	/*Building our DOM object*/
+	/*=======================*/
+
+	root = document.getElementById("question")
+
+	while (root.firstChild) {
+    	root.removeChild(root.firstChild);
+	}
+
+
+	p = document.createElement("p")
+	p.appendChild(document.createTextNode(currQuestion))
+	root.appendChild(p)
+
+	for(i=0; i<currChoices.length; i++){
+
+
+
+		choice = currChoices[i]
+
+		option = document.createElement("input")
+
+		if(typeOfQuestion === "radio") option.type = "radio"
+		else if(typeOfQuestion === "check") option.type = "checkbox"
+		option.name = "option"
+		option.value = i
+		if(i == 0){option.checked = "checked"}
+
+		p = document.createElement("p")
+		p.appendChild(option)
+		p.appendChild(document.createTextNode(choice))
+		p.appendChild(document.createElement("br"))
+
+		root.appendChild(p)
+		
+
+	}	
+
+	
+}
+
+
+function Finish(){
+	Answers = Answers.slice(1)
+	Questions = ConstantQuestions
+
+	root = document.getElementById("question")
+	while (root.firstChild) {
+		root.removeChild(root.firstChild);
+	}
+
+	remove("nextButton")
+
+	correct = 0
+
+	for(i=0; i<Answers.length; i++){
+		typeOfQuestion = Questions[i][3]
+		Options = Questions[i][1]
+		if(typeOfQuestion == "radio"){
+			correctAnswer = Options[Questions[i][2]]
+			yourAnswer = Options[Answers[i]]
+			str = "Question #" + (i+1) + ": " + Questions[i][0] + " | Correct answer: " + correctAnswer + " Your answer: " + yourAnswer
+		}
+		else if(typeOfQuestion == "check"){
+			
+			correctAnswer = []
+			for(j=0; j<Questions[i][2].length; j++){
+				correctAnswer.push(Options[Questions[i][2][j]])
+			}
+			correctAnswer = correctAnswer.join(",")
+			
+			yourAnswer = []
+			for(j=0; j<Answers[i].length; j++){
+				yourAnswer.push(Options[Answers[i][j]])
+			}
+			yourAnswer = yourAnswer.join(",")
+
+
+			 
+
+			str = "Question #" + (i+1) + ": " + Questions[i][0] + " | Correct answer: " + correctAnswer + " Your answer: " + yourAnswer
+		}
+
+		if(correctAnswer == yourAnswer){
+			str+="  | GOOD"
+			correct++
+		}
+		else{
+			str+="  | BAD"
+		}
+
+
+
+		p = document.createElement("p")
+		p.appendChild(document.createTextNode(str))
+		root.appendChild(p)
+
+		
+	}
+
+
+}
+
+
+
+
+function remove(id) {
+    return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+}
+			
+
+</script>
+
+
+
+
+</head>
+
+<body>
+	<div id="header">
+
+		<a href="index.html"><img height=90px src="images/asimov.png"/></a>
+		
+		<p>Asimov's Encyclopedia</p>
+
+	</div>
+
+	<div id="container">
+		<div id="sidebar">
+			<ul>
+				<li><a href="index.html">Main Page</a></li>
+				<li><a href="index.html">Random article</a></li>
+				<li><a href="index.html">News</a></li>
+				<li><a href="index.html">Etc</a></li>
+			</ul>
+
+			<p style="border-top:2px solid grey; padding-top:10px">Читать на другом языке</p>
+			<ul>
+				<li style="color:green"><a href="index.html">Привет</a></li>
+				<li style="color:red"><a href="index.html">Hi</a></li>
+				<li style="color:red"><a href="index.html">Salve</a></li>
+				<li style="color:red"><a href="index.html">Hallo</a></li>
+			</ul>
+
+			
+
+		</div>
+
+
+		
+
+		<div id="content">
+			
+			<h2>Тест</h2>		
+			
+			
+			
+
+
+			<div id="question">
+
+
+			</div>
+
+
+			<script>Next()</script>
+
+			<p><button id="nextButton" onclick="Next()">Следующий</button></p>
+
+
+
+
+		</div>
+		
+	</div>		
+	
+
+	
+
+
+
+
+</body>
+
+</html>	
