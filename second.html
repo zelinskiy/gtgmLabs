@@ -42,23 +42,28 @@
 	var ID
 	var active
 
+	var Speed = 10
+	var Step = 5
+
+	
+
 	function f(){
 		if (!active)
-			ID= setInterval(floatOn, 5)
+			ID= setInterval(floatOn, Speed)
 	}
 
 	function g(){
 		if (!active)
-			ID= setInterval(floatOff, 5)
+			ID= setInterval(floatOff, Speed)
 	}
 
 
 	function floatOn(){
 		active = true
-		console.log("active")
+		console.log(Speed)
 		if(parseInt(e.style.right) <= 0){
 			e = document.getElementById("myframe")
-			pos = parseInt(e.style.right) + 10 
+			pos = parseInt(e.style.right) + Step
 			e.style.right = pos.toString() + 'px'
 			console.log(e.style.right)
 		}
@@ -71,10 +76,10 @@
 	}
 	function floatOff(){
 		active = true
-		console.log("active")
+		console.log(Speed)
 		if(parseInt(e.style.right) >= -180){
 			e = document.getElementById("myframe")
-			pos = parseInt(e.style.right) - 10 
+			pos = parseInt(e.style.right) - Step
 			e.style.right = pos.toString() + 'px'
 			console.log(e.style.right)
 		}
@@ -126,8 +131,13 @@
 		
 
 		<div id="content">
+
 			
-			<h2>Привет</h2>			
+			<h2>Привет</h2>	
+			
+
+
+
 			<iframe id = "myframe" 
 			src="frame.html" 
 			onmouseover="f()"
