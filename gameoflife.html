@@ -1,0 +1,194 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+<script>
+
+Speed = 200
+Cols = 50
+Rows = 50
+Size = 5
+
+LiveColor="green"
+DeadColor = "red"
+
+
+intID = undefined
+onlyNums = new RegExp(/^\d+$/)
+
+
+
+
+
+
+function setMatrix(){
+	Ar = []
+	for(i = 0; i<Rows; i++){
+		Ar.push([])
+		for(j=0;j<Cols; j++){
+			Ar[i].push(0)
+		}
+	}
+	f()
+}
+
+
+
+ 
+
+
+function step(A){
+	B = A
+ 
+	for(i=0; i<A.length;i++){
+		for(j=0; j<A[0].length;j++){
+			cell = A[i][j]
+			n = neighbours(A,i,j)
+			if(cell === 1){
+				if(n > 3){
+					B[i][j] = 0
+				}
+				else if(n < 2){
+					B[i][j] = 0
+				}
+				else{
+					B[i][j] = 1
+				}
+			}
+			else if((cell === 0) && (n == 3)){
+				B[i][j] = 1
+			}
+		}
+	}
+ 
+	return B
+ 
+}
+ 
+
+function neighbours(M, i, j){
+	count = 0
+	N =[[i-1, j-1],
+		[i-1, j],
+		[i-1, j+1],
+		[i, j-1],
+		[i, j+1],
+		[i+1, j-1],
+		[i+1, j],
+		[i+1, j+1]]
+ 
+	for(a=0;a<N.length; a++){
+		i = N[a][0]
+		j = N[a][1]
+ 
+	       
+		if(M[i] !== undefined){
+			if(M[i][j] !== undefined){
+				if(M[i][j] === 1){
+					count++
+				}
+			}
+		}
+	       
+	}
+	return count
+}
+
+
+function build(M){
+	root = document.getElementById("game")
+	while (root.firstChild) {
+		root.removeChild(root.firstChild);
+	}
+
+
+
+	for(i=0; i<M.length; i++){
+		row = document.createElement("tr")
+		for(j=0;j<M[0].length;j++){
+			cell = document.createElement("td")
+			cell.width = Size.toString() + "px"
+			cell.height = Size.toString() + "px"
+
+			
+
+			cell.onclick = function(){
+				if(Ar[this.i[0]][this.i[1]] == 0){
+					this.style.backgroundColor =LiveColor
+					Ar[this.i[0]][this.i[1]] = 1
+				}
+				else if(Ar[this.i[0]][this.i[1]] == 1){
+					this.style.backgroundColor = DeadColor
+					Ar[this.i[0]][this.i[1]] = 0
+				}
+			}
+			cell.i = [i,j]
+
+			if(M[i][j] === 1)
+				cell.style.backgroundColor = LiveColor
+			else
+				cell.style.backgroundColor = DeadColor
+			row.appendChild(cell)
+		}        
+		root.appendChild(row)
+	}
+}
+
+
+function f(){
+	build(Ar);
+	Ar = step(Ar);
+}
+
+
+</script>
+
+</head>
+<body>
+<center>
+	<a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D0%B9,_%D0%94%D0%B6%D0%BE%D0%BD_%D0%A5%D0%BE%D1%80%D1%82%D0%BE%D0%BD"><img src="images/Conway.jpg" width="50px" ></a>
+	<p style="font-size:5pt">John Horton Conway</p>
+
+	<table id="game" border = "0" cellspacing="0" cellpadding="0"></table>
+
+	<input type="button" value="step" onclick="f()">
+	<input type="button" value="go" onclick="if(intID === undefined) intID = setInterval(f, Speed)">
+	<input type="button" value="stop" onclick="clearInterval(intID); intID = undefined">
+	<input type="button" value="clear" onclick="setMatrix()">
+	<br>
+	<p>Скорость:</p>
+	<input type="text" value = "200" onchange="if(onlyNums.test(this.value) == true) {Speed = parseInt(this.value)} else{this.value='bad'}">
+	<br>
+	<p>Размер поля:</p>
+	<input type="text" value = "50" onchange="if(onlyNums.test(this.value) == true) {Rows = parseInt(this.value)} else{this.value='bad'}" size = "5">
+	X
+	<input type="text" value = "50" onchange="if(onlyNums.test(this.value) == true) {Cols = parseInt(this.value)} else{this.value='bad'}" size = "5">
+	
+	<p>Размер ячейки:</p>
+	<input type="text" value = "5" onchange="if(onlyNums.test(this.value) == true) {Size = parseInt(this.value)} else{this.value='bad'}" size = "5">
+	<br>
+	<table cellspacing="40">
+		<tr>
+			<td>
+				<p>Цвет живых ячеек:</p>
+				<center><input type="text" value = "green" onchange="LiveColor = this.value" size = "5"></center>
+			</td>
+			<td>
+				<p>Цвет мертвых ячеек:</p>
+				<center><input type="text" value = "red" onchange="DeadColor = this.value" size = "5"></center>
+			</td>
+		</tr>
+	</table>	
+	
+	<br>
+	<input type="button" value="Создать новое поле" onclick="setMatrix()">
+</center>
+<script>
+
+setMatrix()
+
+
+
+</script>
+</body>
+</html>
