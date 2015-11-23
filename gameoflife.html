@@ -32,18 +32,30 @@ function setMatrix(){
 	f()
 }
 
+function clearMatrix(){
+	NewArr = []
+	for(i = 0; i<Rows; i++){
+		NewArr.push([])
+		for(j=0;j<Cols; j++){
+			NewArr[i].push(0)
+		}
+	}
+	return NewArr
+}
+
 
 
  
 
 
 function step(A){
-	B = A
+	B = clearMatrix()
  
 	for(i=0; i<A.length;i++){
 		for(j=0; j<A[0].length;j++){
 			cell = A[i][j]
 			n = neighbours(A,i,j)
+			
 			if(cell === 1){
 				if(n > 3){
 					B[i][j] = 0
@@ -55,9 +67,21 @@ function step(A){
 					B[i][j] = 1
 				}
 			}
-			else if((cell === 0) && (n == 3)){
+			if((cell == 0) && (n == 3)){
 				B[i][j] = 1
+				
 			}
+
+			/*======CONSOLE=============*/
+
+			if((cell == 0) && (n > 0)){
+				console.log(i,j,"|", n)
+				
+			}
+
+			/*=======================*/
+
+
 		}
 	}
  
@@ -77,7 +101,7 @@ function neighbours(M, i, j){
 		[i+1, j],
 		[i+1, j+1]]
  
-	for(a=0;a<N.length; a++){
+	for(a=0;a<8; a++){
 		i = N[a][0]
 		j = N[a][1]
  
@@ -91,8 +115,10 @@ function neighbours(M, i, j){
 		}
 	       
 	}
+
 	return count
 }
+
 
 
 function build(M){
@@ -136,8 +162,9 @@ function build(M){
 
 
 function f(){
-	build(Ar);
 	Ar = step(Ar);
+	build(Ar);
+	
 }
 
 
