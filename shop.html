@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="keywords" content="encyclopedia, knowledge, math, history, science, collaboration"/>
+<meta name="description" content="Here I will collect usable information"/>
+<meta name="subject" content="Science">
+<meta name="copyright"content="Creative Commons">
+<meta name="language" content="RU, EN">
+<meta name="robots" content="index,follow" />
+<meta name="Classification" content="Science">
+<meta name="author" content="Nikita Yurchenko, zelinskiy1917@gmail.com">
+
+	<title>
+		Привет
+	</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oranienbaum">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Special Elite">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+
+	<style>
+
+	h3 {
+		padding-left:100px;
+		background-color:#D1D1D1;;
+	}
+
+	table {
+		border:0;
+		cellspacing:0;
+		cellpadding:0;
+	}
+
+	.cat_lvl1{
+		padding-left:20px;
+		//background-color:red;
+	}
+	
+
+	.cat_lvl2{
+		padding-left:100px;
+		//background-color:green;
+		
+	}
+
+
+	.books{
+		display:inline;
+	}
+
+
+	.book{
+		background-color: blue;
+		margin:30px;
+		height:250px;
+
+	}
+	.book img{
+		width:80px;
+	}
+	.book p{
+		font-size:10pt;
+	}
+	
+
+	</style>
+
+
+
+
+
+	<script>
+
+
+/*
+	CATS = [["node",
+		["cat", "russian",[
+			[1,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			[2,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			]
+		]
+		["cat", "russian",[
+			[3,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			[4,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			]
+		]
+	],
+	["node",
+		["cat", "russian",[
+			[5,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			[6,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			]
+		]
+		["cat", "russian",[
+			[7,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			[8,"book-covers/voina_i_mir.jpeg", "Война и Мир", "100"],
+			]
+		]
+	]]
+
+
+	function buildDOM(L){
+
+		root = document.getElementById("shop")
+		/*
+		for(i=0;i<L.length;i++){
+			if(L[i][0] == "node"){
+
+			}
+			else if(L[i][0] == "cat"){
+
+			}
+		}
+		
+
+	}
+
+*/
+
+	function toggle(id){
+		var el = document.getElementById(id);
+		if ( el.style.display != 'none' ) {
+			el.style.display = 'none';
+		}
+
+		else {
+			el.style.display = '';
+		}
+	}
+	</script>
+
+
+</head>
+
+<body>
+	<div id="header">
+
+		<a href="index.html"><img height=90px src="images/asimov.png"/></a>
+		
+		<p>Asimov's Encyclopedia</p>
+
+	</div>
+
+	<div id="container">
+		<div id="sidebar">
+			<ul>
+				<li><a href="index.html">Main Page</a></li>
+				<li><a href="index.html">Random article</a></li>
+				<li><a href="index.html">News</a></li>
+				<li><a href="index.html">Etc</a></li>
+			</ul>
+
+			<p style="border-top:2px solid grey; padding-top:10px">Читать на другом языке</p>
+			<ul>
+				<li style="color:green"><a href="index.html">Привет</a></li>
+				<li style="color:red"><a href="index.html">Hi</a></li>
+				<li style="color:red"><a href="index.html">Salve</a></li>
+				<li style="color:red"><a href="index.html">Hallo</a></li>
+			</ul>
+
+			
+
+		</div>
+
+
+		
+
+		<div id="content">
+			
+			<h2>Магазин</h2>			
+			<div class="cat_lvl1" id="1">
+				<h3 onclick="toggle('1_content');">Русская литература</h3>
+				<div class="books" id="1_content">
+
+
+					<div class="cat_lvl2" id="1.1">
+						<h3 onclick="toggle('1.1_content');">Проза</h3>
+						<div class="books" id="1.1_content">
+
+							<span class="book">
+								<table width="100%">
+								<tr>
+									<td width="20%"><img src="book-covers/voina_i_mir.jpeg"></td>
+									<td width="70%"><p>Л. Н. Толстой "Война и Мир"</p></td>
+									<td width="5%"><p>100</p></td>
+									<td width="5%"><p><input type="checkbox" id="voina_checkbox"></p></td>
+								</tr>
+								</table>					
+							</span>
+
+							<span class="book">
+								<table width="100%">
+								<tr>
+									<td width="20%"><img src="book-covers/chto_delat.jpeg"></td>
+									<td width="70%"><p>Н. Г. Чернышевский "Что делать?"</p></td>
+									<td width="5%"><p>100</p></td>
+									<td width="5%"><p><input type="checkbox" id="chernyshevskiy_checkbox"></p></td>
+								</tr>
+								</table>					
+							</span>
+
+						</div>
+					</div>
+
+					<div class="cat_lvl2" id="1.2">
+						<h3 onclick="toggle('1.2_content');">Стихи</h3>
+						<div class="books" id="1.2_content">
+
+							<span class="book">
+								<table width="100%">
+								<tr>
+									<td width="20%"><img src="book-covers/pushkin.jpg"></td>
+									<td width="70%"><p>А. С. Пушкин "Стихотворения"</p></td>
+									<td width="5%"><p>100</p></td>
+									<td width="5%"><p><input type="checkbox" id="pushkin_checkbox"></p></td>
+								</tr>
+								</table>					
+							</span>										
+
+						</div>
+					</div>
+
+					
+
+				</div>
+			</div>
+			<div class="cat_lvl1" id="2">
+				<h3 onclick="toggle('2_content');">Литература Древнего Рима</h3>
+				<div class="books" id="2_content">
+
+					<span class="book">
+						<table width="100%">
+						<tr>
+							<td width="20%"><img src="book-covers/tranquil.jpg"></td>
+							<td width="70%"><p>Г. С. Транквил "Жизнь двенадцати Цезарей"</p></td>
+							<td width="5%"><p>100</p></td>
+							<td width="5%"><p><input type="checkbox" id="tranquil_checkbox"></p></td>
+						</tr>
+						</table>					
+					</span>						
+					
+
+				</div>
+			</div>
+
+
+			
+
+			
+
+
+		</div>
+		
+	</div>		
+	
+
+	
+
+
+
+<script>
+C = ["2_content", "1_content", "1.1_content", "1.2_content"]
+
+for(i=0;i<C.length;i++){
+	toggle(C[i])
+}
+
+</script>
+
+
+</body>
+
+</html>
