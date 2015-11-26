@@ -2,6 +2,23 @@
 <head>
 
 <meta charset="utf-8">
+
+
+<style>
+body {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    
+}
+
+#game{
+	width: 100vw;
+    height: 100vw;
+}
+</style>
+
+
+
 <script>
 
 Speed = 200
@@ -72,14 +89,7 @@ function step(A){
 				
 			}
 
-			/*======CONSOLE=============*/
-
-			if((cell == 0) && (n > 0)){
-				console.log(i,j,"|", n)
-				
-			}
-
-			/*=======================*/
+			
 
 
 		}
@@ -127,6 +137,7 @@ function build(M){
 		root.removeChild(root.firstChild);
 	}
 
+	
 
 
 	for(i=0; i<M.length; i++){
