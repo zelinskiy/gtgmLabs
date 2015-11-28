@@ -262,19 +262,17 @@
 		<article>
 		<p>
 		<script>
-			function getLocation(){
-				if (navigator.geolocation) {
-				console.log("API detected")
-				navigator.geolocation.getCurrentPosition(showPosition);
-				} else {
-				document.write( "Geolocation is not supported by this browser.");
-				}
+			if (navigator.geolocation) {
+			console.log("API detected")
+			navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+			document.write( "Geolocation is not supported by this browser.");
 			}
 			
 			function showPosition(position) {
 				document.write( "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude)
 			}
-			getLocation()
+
 
 			/*
 			if (navigator.geolocation) {
