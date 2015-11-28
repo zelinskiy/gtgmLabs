@@ -237,6 +237,41 @@
 	    "<br>Долгота: " + position.coords.longitude;	
 	}
 
+	CurrentMusic = 0
+	Musics=[
+			["rock", "Bill Haley & His Comets | Rock Around the Clock"],
+			["bet", "L. van Beethoven | Symphony #7 Allegretto"],
+			["verdi", "G. Verdi | Triumphal March from Aida"]
+			]
+
+	function playMus(){
+		A = document.getElementById("music")
+		A.play()
+	}
+	function pauseMus(){
+		A = document.getElementById("music")
+		A.pause()
+	}
+
+	function reloadMus(){
+		A = document.getElementById("music")
+		A.load()
+	}
+
+	function nextMus(){
+		A = document.getElementById("music")
+		CurrentMusic = (CurrentMusic + 1) % Musics.length
+		s = document.getElementById("music")
+		s.src = "music/" + Musics[CurrentMusic][0] + ".mp3"
+		A.load()
+		console.log(CurrentMusic)
+		showMusName()
+	}
+	function showMusName(){
+		N = document.getElementById("musictitle")
+		N.innerHTML=Musics[CurrentMusic][1]
+	}
+
 
 	</script>
 
@@ -280,6 +315,23 @@
 		<section>
 
 		<article>
+		<p>
+			<span id="musictitle"></span>
+			<audio id="music" >
+				<source id="musicsrc" src="music/rock.mp3" type="audio/mpeg">
+				Your browser does not support the audio.			
+			</audio>
+			<br>
+			<button onclick="playMus()">Play</button>
+			<button onclick="pauseMus()">Pause</button>
+			<button onclick="reloadMus()">Reload</button>
+			<button onclick="nextMus()">Next Music</button>
+			
+		</p>
+		<script>showMusName()</script>
+
+
+
 		<button onclick="getLocation()">Геолокация</button>
 		<p id="geo"></p>
 
