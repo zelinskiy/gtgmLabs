@@ -233,8 +233,8 @@
 
 	function showPosition(position) {
 		x=document.getElementById("geo")
-	    x.innerHTML = "Latitude: " + position.coords.latitude + 
-	    "<br>Longitude: " + position.coords.longitude;	
+	    x.innerHTML = "Широта: " + position.coords.latitude + 
+	    "<br>Долгота: " + position.coords.longitude;	
 	}
 
 
@@ -280,7 +280,7 @@
 		<section>
 
 		<article>
-		<button onclick="getLocation()">Try It</button>
+		<button onclick="getLocation()">Геолокация</button>
 		<p id="geo"></p>
 
 
