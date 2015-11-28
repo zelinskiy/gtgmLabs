@@ -218,6 +218,24 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
+
+	
+
+	function getLocation(x) {
+		x=document.getElementById("geo")
+	    if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(showPosition);
+	    } else { 
+	        x.innerHTML = "Geolocation is not supported by this browser.";
+	    }
+	}
+
+	function showPosition(position) {
+	    x.innerHTML = "Latitude: " + position.coords.latitude + 
+	    "<br>Longitude: " + position.coords.longitude;	
+	}
+
+
 	</script>
 
 
@@ -260,29 +278,8 @@
 		<section>
 
 		<article>
-		<p>
-		<script>
-			if (navigator.geolocation) {
-			console.log("API detected")
-			navigator.geolocation.getCurrentPosition(showPosition);
-			} else {
-			document.write( "Geolocation is not supported by this browser.");
-			}
-			
-			function showPosition(position) {
-				document.write( "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude)
-			}
-
-
-			/*
-			if (navigator.geolocation) {
-			document.write("<p>" + navigator.geolocation.getCurrentPosition(show_map) + "</p>")
-			} else {
-			document.write("<p>Geolocation is not supported by this browser</p>")
-			}
-			*/
-		</script>
-	</p>
+		<button onclick="getLocation()">Try It</button>
+		<p id="geo"></p>
 
 
 
