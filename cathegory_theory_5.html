@@ -46,21 +46,6 @@
 	cursor: pointer;
 	}
 
-	
-
-	
-
-
-
-	
-
-
-	
-
-	
-	
-
-
 	header {
 	border:2px solid black;
 	background-color: #D1D1D1;
@@ -141,12 +126,32 @@
 	font-size:15pt;
 	text-align:center;
 	}
+
+	.vid {
+		height:70%;
+	}
 	
 
 	</style>
 
 
 	<script>
+
+	Videos = [
+			["edarem", "edarem | Hungarian Dance"],
+			["daun", "Даун Хаус"],
+			["lyndon", "Stanley Cubrick | Barry Lyndon"]
+			]
+
+	Musics=[
+			["rock", "Bill Haley & His Comets | Rock Around the Clock"],
+			["bet", "L. van Beethoven | Symphony #7 Allegretto"],
+			["verdi", "G. Verdi | Triumphal March from Aida"]
+			]
+
+
+
+
 	window.onload = function() {
 		var drawingCanvas = document.getElementById('canvas');
 		drawingCanvas.height = 1000;
@@ -238,11 +243,7 @@
 	}
 
 	CurrentMusic = 0
-	Musics=[
-			["rock", "Bill Haley & His Comets | Rock Around the Clock"],
-			["bet", "L. van Beethoven | Symphony #7 Allegretto"],
-			["verdi", "G. Verdi | Triumphal March from Aida"]
-			]
+	
 
 	function playMus(){
 		A = document.getElementById("music")
@@ -270,6 +271,41 @@
 	function showMusName(){
 		N = document.getElementById("musictitle")
 		N.innerHTML=Musics[CurrentMusic][1]
+		C = document.getElementById("musiccover")
+		C.src= "music-covers/" + Musics[CurrentMusic][0] + ".jpg"
+	}
+
+
+
+	
+	CurrentVideo = 0
+	
+
+	function playVid(){
+		V = document.getElementById("video")
+		V.play()
+	}
+	function pauseVid(){
+		V = document.getElementById("video")
+		V.pause()
+	}
+
+	function reloadVid(){
+		V = document.getElementById("video")
+		V.load()
+	}
+
+	function nextVid(){
+		V = document.getElementById("video")
+		CurrentVideo = (CurrentVideo + 1) % Videos.length
+		s = document.getElementById("videosrc")
+		s.src ="videos/" + Videos[CurrentVideo][0] + ".mp4"
+		V.load()
+		showVidName()
+	}
+	function showVidName(){
+		N = document.getElementById("videotitle")
+		N.innerHTML=Videos[CurrentVideo][1]
 	}
 
 
@@ -316,9 +352,19 @@
 
 		<article>
 		<p>
+			<img 
+				onerror = "this.src='music-covers/default.jpg'"
+				id = "musiccover" 
+				height=300px>
+			<br>
 			<span id="musictitle"></span>
+			
+			
+
+
+
 			<audio id="music" >
-				<source id="musicsrc" src="music/rock.mp3" type="audio/mpeg">
+				<source id="musicsrc" src="music/rock.mp3">
 				Your browser does not support the audio.			
 			</audio>
 			<br>
@@ -331,10 +377,32 @@
 		<script>showMusName()</script>
 
 
+		<p>
+
+			
+
+			<video id="video" class = "vid">
+				<source id="videosrc">
+				Your browser does not support the video.			
+			</video>
+			<br>
+			<span id="videotitle"></span>
+			<br>
+			<button onclick="playVid()">Play</button>
+			<button onclick="pauseVid()">Pause</button>
+			<button onclick="reloadVid()">Reload</button>
+			<button onclick="nextVid()">Next Video</button>
+			
+		</p>
+		<script>showVidName();nextVid()</script>
+
+		<br>
+
 
 		<button onclick="getLocation()">Геолокация</button>
 		<p id="geo"></p>
 
+		<br>
 
 
 		<canvas id="canvas" width="200" height="200">
@@ -383,145 +451,11 @@
 
 			
 			<p><input type="submit"></p>
-		</form>
-
-		
+		</form>		
 
 
 		</article>
 
-
-		<article>
-			
-			
-			<h3>Первые статьи</h3>
-			<ol>
-				<li><a href="cathegory_theory_rus.html">Теория категорий</a></li>
-				<li><a href="cathegory_theory_rus_deprecated.html">Теория категорий- экспериментальная</a></li>
-				<li><a href="testing.html">Тестик - с отчетом на отдельной странице</a></li>
-				<li><a href="second.html">Выплывающий фрейм</a></li>
-				<li><a href="gameoflife.html">Игра "Жизнь" - неоформленная</a></li>
-				<li><a href="cathegory_theory_5.html">Теория категорий - Версия с HTML5</a></li>
-				<li><a href="third.html">Fun with HTML5</a></li>
-				
-				
-			</ol>
-
-
-		</article>
-
-		<article>
-
-			<div class="content_table">
-			<h4>Содержание</h4>
-			<ul>
-				<li><a href="#introduction">Вступление</a></li>
-				<li><a href="#definition">Формальное определение</a></li>
-				<li><a href="#examples">Примеры</a></li>
-			</ul>
-			</div>
-
-			
-			<h2>Теория категорий</h2>
-			<span id="introduction"></span>
-			<h4>Вступление</h4>
-
-			<p>Многие понятия в Haskell позаимствованы из теории категорий, например это функторы, монады. Теория категорий – это скорее язык, математический жаргон, она настолько общая, что кажется ей нет никакого применения. Возможно это и так, но в этом языке многие сущности, которые лишь казались родственными и было смутное интуитивное ощущение их близости, становятся тождественными.</p>
-			<p>Теория категорий занимается описанием функций. В лямбда-исчислении основной операцией была подстановка значения в функцию, а в теории категорий мы сосредоточимся на операции композиции. Мы будем соединять различные объекты так, чтобы структура объектов сохранялась. Структура объекта будет определяться свойствами, которые продолжают выполнятся после преобразования объекта.</p>
-			<h3>Категория</h3>
-			<p>Мы будем говорить об объектах и связях между ними. Связи принято называть “стрелками” или “морфизмами”. Далее мы будем пользоваться термином стрелка. У стрелки есть начальный объект, его называют <em>доменом</em> (domain) и конечный объект, его называют <em>кодоменом</em> (codomain).</p>
-			<p><span class="math">\[ A \xrightarrow{f} B \]</span>
-			<p>В этой записи стрелка f соединяет объекты A и B, в тексте мы будем писать это так f:A→B, словно стрелка это функция, а объекты это типы. Мы будем обозначать объекты большими буквами A, B, C, …, а стрелки – маленькими буквами f, g, h, … Для того чтобы связи было интереснее изучать мы введём такое правило:</p>
-			<center><img width="200px" src="images/composition.png" /></center>
-			<p>Если конец стрелки f указывает на начало стрелки g, то должна быть такая стрелка f;g, которая обозначает составную стрелку. Вводится специальная операция “точка с запятой”, которая называется композицией стрелок: Это правило говорит о том, что связи распространяются по объектам. Теперь у нас есть не просто объекты и стрелки, а целая сеть объектов, связанных между собой. Тот факт, что связи действительно распространяются отражается свойством:</p>
-			<p>Связи между объектами можно трактовать как преобразования объектов. Стрелка f:A→B – это способ, с помощью которого мы можем перевести объект A в объект B. Композиция в этой аналогии приобретает естественную интерпретацию. Если у нас есть способ f:A→B преобразования объекта A в объект B, и способ g:B→C преобразования объекта B в объект C, то мы конечно можем, применив сначала f, а затем g, получить из объекта A объект C.</p>
-
-			<p><span class="math">\[id_A : A \rightarrow A\]</span></p>
-
-			<p>Когда мы думаем о стрелках как о преобразовании, то естественно предположить, что у нас есть преобразование, которое ничего не делает, как тождественная функция. В будем говорить, что для каждого объекта <span class="math">\(A\)</span> есть стрелка <span class="math">\(id_A\)</span>, которая начинается из этого объекта и заканчивается в нём же.</p>
-
-			<p><span class="math">\[id_A : A \rightarrow A\]</span></p>
-
-			<p>Тот факт, что стрелка <span class="math">\(id_A\)</span> ничего не делает отражается свойствами, которые должны выполняться для всех стрелок:</p>
-
-			<div class="formula">
-			<table>
-				<tbody>
-				<tr class="odd">
-					<td align="left"><span class="math">\(id_A \:\mathbf{;}\:f\)</span></td>
-					<td align="center"><span class="math">\(=\)</span></td>
-					<td align="left"><span class="math">\(f\)</span></td>
-				</tr>
-				<tr class="even">
-					<td align="left"><span class="math">\(f \:\mathbf{;}\:id_A\)</span></td>
-					<td align="center"><span class="math">\(=\)</span></td>
-					<td align="left"><span class="math">\(f\)</span></td>
-				</tr>
-				</tbody>
-			</table>
-			</div>
-
-			<span id="definition"></span>
-			<h4>Определение</h4>
-
-			<p>Если мы добавим к любой стрелке тождественную стрелку, то от этого ничего не изменится.</p>
-			<p>Всё готово для того чтобы дать формальное определение понятия  <em>категории</em> (category). Категория это:</p>
-			<ul>
-				<li>
-					<p>Набор <em>объектов</em> (object).</p>
-				</li>
-				<li>
-					<p>Набор <em>стрелок</em> (arrow) или <em>морфизмов</em> (morphism).</p>
-				</li>
-				<li>
-					<p>Каждая стрелка соединяет два объекта, но объекты могут совпадать. Так обозначают, что стрелка <span class="math">\(f\)</span> начинается в объекте <span class="math">\(A\)</span> и заканчивается в объекте <span class="math">\(B\)</span>:</p>
-					<p><span class="math">\[f : A \rightarrow B\]</span></p>
-					<p>При этом стрелка соединяет только два объекта:</p>
-					<p><span class="math">\[f : A \rightarrow B,\ f : A&#39; \rightarrow B&#39; \qquad \Rightarrow \qquad A=A&#39;,\ B=B&#39;\]</span></p>
-				</li>
-				<li>
-					<p>Определена операция композиции или соединения стрелок. Если конец одной стрелки совпадает с началом другой, то их можно соединить вместе:</p>
-					<p><span class="math">\[f:A \rightarrow B,\ g : B\rightarrow C \quad \Rightarrow \quad f \:\mathbf{;}\:g : A \rightarrow C\]</span></p>
-				</li>
-				<li>
-					<p>Для каждого объекта есть стрелка, которая начинается и заканчивается в этом объекте. Эту стрелку называют <em>тождественной</em> (identity):</p>
-					<p><span class="math">\[id_A : A \rightarrow A\]</span></p>
-				</li>
-			</ul>
-
-			<p>Должны выполняться аксиомы:</p>
-
-			<ul>
-				<li>
-					<p>Тождество <span class="math">\(id\)</span></p>
-					<p><span class="math">\[id \:\mathbf{;}\:f = f\]</span></p>
-					<p><span class="math">\[f \:\mathbf{;}\:id = f\]</span></p>
-				</li>
-				<li>
-					<p>Ассоциативность <span class="math">\(\:\mathbf{;}\:\)</span></p>
-					<p><span class="math">\[f \:\mathbf{;}\:(g \:\mathbf{;}\:h) = (f \:\mathbf{;}\:g) \:\mathbf{;}\:h\]</span></p>
-				</li>
-			</ul>
-
-			<span id="examples"></span>
-			<h4>Примеры</h4>
-			<p>Приведём примеры категорий.</p>
-			<ul>
-			<li><p>Одна точка с одной тождественной стрелкой образуют категорию.</p></li>
-			<li><p>В категории <strong>Set</strong> объектами являются все множества, а стрелками – функции. Стрелки соединяются с помощью композиции функций, тождественная стрелка, это тождественная функция.</p></li>
-			<li><p>В категории <strong>Hask</strong> объектами являются типы Haskell, а стрелками – функции, стрелки соединяются с помощью композиции функций, тождественная стрелка, это тождественная функция.</p></li>
-			<li><p>Ориентированный граф может определять категорию. Объекты – это вершины, а стрелки это связанные пути в графе. Соединение стрелок – это соединение путей, а тождественная стрелка, это путь в котором нет ни одного ребра.</p></li>
-			<li><p>Упорядоченное множество, в котором есть операция сравнения на больше либо равно задаёт категорию. Объекты – это объекты множества. А стрелки это пары объектов таких, что первый объект меньше второго. Первый объект в паре считается начальным, а второй конечным.</p>
-			<p><span class="math">\[(a, b) : a \rightarrow b  \qquad \text{если } a \leq b\]</span></p>
-			<p>Стрелки соединяются так:</p>
-			<p><span class="math">\[(a, b) \:\mathbf{;}\:(b, c) = (a, c)\]</span></p>
-			<p>Тождественная стрелка состоит из двух одинаковых объектов:</p>
-			<p><span class="math">\[id_a = (a, a)\]</span></p>
-			<p>Можно убедиться в том, что это действительно категория. Для этого необходимо проверить аксиомы ассоциативности и тождества. Важно проверить, что те стрелки, которые получаются в результате композиции, не нарушали бы основного свойства данной структуры, то есть тот факт, что второй элемент пары всегда больше либо равен первого элемента пары.</p></li>
-			</ul>
-			<p>Отметим, что бывают такие области, в которых стрелки или преобразования с одинаковыми именами могут соединять несколько разных объектов. Например в Haskell есть классы, поэтому функции с одними и теми же именами могут соединять разные объекты. Если все условия категории для объектов и стрелок выполнены, кроме этого, то такую систему называют <em>прекатегорией</em> (pre-category). Из любой прекатегории не сложно сделать категорию, если включить имена объектов в имя стрелки. Тогда у каждой стрелки будут только одна пара объектов, которые она соединяет.</p>
-
-		</article>
 
 	</section>
 		
