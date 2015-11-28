@@ -133,6 +133,34 @@
 			el.style.display = '';
 		}
 	}
+
+
+	function makeOrder(){
+
+		allItems = [
+				"voina_checkbox",
+				"chernyshevskiy_checkbox",
+				"pushkin_checkbox",
+				"tranquil_checkbox",
+				]
+
+		selected=[]
+
+		for(i=0;i<allItems.length;i++){
+			item = document.getElementById(allItems[i])
+			price = item.parentNode.parentNode.parentNode.childNodes[5].childNodes[0].innerHTML
+			name = item.parentNode.parentNode.parentNode.childNodes[3].childNodes[0].innerHTML
+			if(item.checked == true){
+				selected.push(escape(name) + "$P$" + price)
+			}
+		}
+
+		location.href = 'makeOrder.html?selected=' + selected.join(" |&&&| ")
+
+
+	}
+
+
 	</script>
 
 
@@ -172,8 +200,12 @@
 		
 
 		<div id="content">
-			
-			<h2>Магазин</h2>			
+			<table>
+				<tr>
+					<td width="80%"><h2>Магазин</h2></td>
+					<td width="20%"><h2><button id="orderButton" onclick="makeOrder()">Сделать Заказ</button></h2></td>
+				</tr>	
+			</table>		
 			<div class="cat_lvl1" id="1">
 				<h3 onclick="toggle('1_content');">Русская литература</h3>
 				<div class="books" id="1_content">
@@ -188,7 +220,7 @@
 								<tr>
 									<td width="20%"><img src="book-covers/voina_i_mir.jpeg"></td>
 									<td width="70%"><p>Л. Н. Толстой "Война и Мир"</p></td>
-									<td width="5%"><p>100</p></td>
+									<td width="5%"><p>75</p></td>
 									<td width="5%"><p><input type="checkbox" id="voina_checkbox"></p></td>
 								</tr>
 								</table>					
@@ -199,7 +231,7 @@
 								<tr>
 									<td width="20%"><img src="book-covers/chto_delat.jpeg"></td>
 									<td width="70%"><p>Н. Г. Чернышевский "Что делать?"</p></td>
-									<td width="5%"><p>100</p></td>
+									<td width="5%"><p>30</p></td>
 									<td width="5%"><p><input type="checkbox" id="chernyshevskiy_checkbox"></p></td>
 								</tr>
 								</table>					
@@ -217,7 +249,7 @@
 								<tr>
 									<td width="20%"><img src="book-covers/pushkin.jpg"></td>
 									<td width="70%"><p>А. С. Пушкин "Стихотворения"</p></td>
-									<td width="5%"><p>100</p></td>
+									<td width="5%"><p>45</p></td>
 									<td width="5%"><p><input type="checkbox" id="pushkin_checkbox"></p></td>
 								</tr>
 								</table>					
@@ -239,7 +271,7 @@
 						<tr>
 							<td width="20%"><img src="book-covers/tranquil.jpg"></td>
 							<td width="70%"><p>Г. С. Транквил "Жизнь двенадцати Цезарей"</p></td>
-							<td width="5%"><p>100</p></td>
+							<td width="5%"><p>123</p></td>
 							<td width="5%"><p><input type="checkbox" id="tranquil_checkbox"></p></td>
 						</tr>
 						</table>					

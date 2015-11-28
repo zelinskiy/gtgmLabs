@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+	<title>
+		Привет
+	</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oranienbaum">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Special Elite">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+<script>
+
+CONSTANT = 3
+
+function onLoad(){
+	l = location.toString()
+	i = l.indexOf("=")
+	l = l.split("").slice(i+1).join("")
+	S = l.split("|&&&|").map(function(str){return unescape(str)})
+	for(i=0; i< S.length; i++){
+		name = S[i].split("$P$")[0]
+		price = S[i].split("$P$")[1]
+		S[i] = [unescape(name), price]
+	}
+}
+
+function fork(){
+	options = document.getElementsByName("option")
+	
+	if(options[1].checked == true){
+		console.log("yes")
+		clr()
+		secondA()
+	}
+	else{
+		clr()
+		secondB()
+		console.log("nope")
+	}
+	
+	
+}
+
+function clr(){
+	root = document.getElementById("question")
+
+	while (root.firstChild) {
+    	root.removeChild(root.firstChild);
+	}
+}
+
+function secondA(){
+	choices = ["1", "2", "3", "4"]
+
+	root = document.getElementById("question")
+
+	for(i=0;i<choices.length; i++){
+		choice = choices[i]
+		option = document.createElement("input")
+		option.name = "option"
+		option.value = i
+		option.type = "radio"
+
+		p = document.createElement("p")
+		p.appendChild(option)
+		p.appendChild(document.createTextNode(choice))
+		p.appendChild(document.createElement("br"))
+		root.appendChild(p)
+	}
+}
+
+function secondB(){
+
+}
+
+			
+
+</script>
+
+
+
+
+</head>
+
+<body>
+	<div id="header">
+
+		<a href="index.html"><img height=90px src="images/asimov.png"/></a>
+		
+		<p>Asimov's Encyclopedia</p>
+
+	</div>
+
+	<div id="container">
+		<div id="sidebar">
+			<ul>
+				<li><a href="index.html">Main Page</a></li>
+				<li><a href="index.html">Random article</a></li>
+				<li><a href="index.html">News</a></li>
+				<li><a href="index.html">Etc</a></li>
+			</ul>
+
+			<p style="border-top:2px solid grey; padding-top:10px">Читать на другом языке</p>
+			<ul>
+				<li style="color:green"><a href="index.html">Привет</a></li>
+				<li style="color:red"><a href="index.html">Hi</a></li>
+				<li style="color:red"><a href="index.html">Salve</a></li>
+				<li style="color:red"><a href="index.html">Hallo</a></li>
+			</ul>
+
+			
+
+		</div>
+
+
+		
+
+		<div id="content">
+			
+			<h2>Оформление заказа</h2>		
+			
+
+			<div id="question">
+				<p>забрать?</p>
+				<p><input type="radio" checked = "checked" name="option" value="0">Нет<br></p>
+				<p><input type="radio" name="option" value="1">Да<br></p>
+				<button id="firstButton" onclick="fork()">Далее</button>
+				
+			</div>			
+			
+
+
+			
+
+
+			
+
+
+
+		</div>
+		
+	</div>		
+	
+
+	
+
+
+<script>onLoad()</script>
+</body>
+
+</html>	
