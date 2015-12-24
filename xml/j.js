@@ -72,10 +72,10 @@ function formOrder(){
 		thissum = price*quantity
 		total+=thissum
 
-		text+=name + "\n" + "$" + price + " * " + quantity  + "  == $" + thissum.toFixed(2) + "\n--------------\n"
+		text+=name + "\n" + "$" + price + " * " + quantity  + "  == $" + thissum + "\n--------------\n"
 
 	}
-	text+= "===============\nTOTAL: \t\t$" + total.toFixed(2)
+	text+= "===============\nTOTAL: \t\t$" + total
 	console.log(text)
 	alert(text)
 }
