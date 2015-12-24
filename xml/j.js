@@ -69,13 +69,16 @@ function formOrder(){
 		name = item[0]
 		price = item[1]
 		quantity = item[2]
+		if(isNaN(quantity)){
+			quantity = 0
+		}
 		thissum = price*quantity
 		total+=thissum
 
-		text+=name + "\n" + "$" + price + " * " + quantity  + "  == $" + thissum + "\n--------------\n"
+		text+=name + "\n" + "$" + price + " * " + quantity  + "  == $" + thissum.toFixed(2) + "\n--------------\n"
 
 	}
-	text+= "===============\nTOTAL: \t\t$" + total
+	text+= "===============\nTOTAL: \t\t$" + total.toFixed(2)
 	console.log(text)
 	alert(text)
 }
