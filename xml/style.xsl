@@ -22,6 +22,8 @@
 
 <body style="font-family:Arial;font-size:12pt;background-color:#EEEEEE">
 
+<center><h1 style="color:teal">CAFE MENU</h1></center>
+
 <xsl:for-each select="breakfast_menu/food">
 	<div name="item" style="background-color:teal;color:white;padding:4px">
 
