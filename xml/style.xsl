@@ -4,12 +4,13 @@
 
 <script type = "text/javascript" src = "libs/xml/xmllint.js"></script>
 <script type = "text/javascript" src = "j.js"></script>
+<script type = "text/javascript" src = "http://syssgx.github.com/xml.js/js/xmllint.js
+"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 <script>
-	
-	init()	
-
-
+	init()
 
 </script>
 
@@ -34,7 +35,7 @@
 		<span style="font-style:italic"> (<xsl:value-of select="calories"/> calories per serving)</span>
 		</p>
 		<p>
-		<img onload="replaceURL(this)" src="http://38.media.tumblr.com/599bcef548ca67d1171051d0cba7c885/tumblr_inline_naxgulp9MU1rzk7al.jpg" width="100"/>
+		<img onload="replaceURL(this)" src="https://raw.githubusercontent.com/jhermann/Stack-O-Waffles/master/waffles.png" width="100"/>
 		<span style="display:none;"><xsl:value-of select="image"/></span>
 		</p>
 
@@ -42,7 +43,10 @@
   </div>
 </xsl:for-each>
 
+
 <button id="btn1" onclick="buttonHandler()" >make order</button>
+
+
 
 </body>
 </html>

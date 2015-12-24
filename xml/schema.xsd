@@ -1,16 +1,24 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<xs:element name="food">
-		<xs:complexType>
+<xs:element name="breakfast_menu" >
+<xs:complexType>
+<xs:sequence maxOccurs="unbounded">
+			<xs:element name="food" >
+			<xs:complexType>
 			<xs:sequence>
+
 				<xs:element name="name" type="xs:string"/>
 				<xs:element name="price" type="xs:string"/>
 				<xs:element name="description" type="xs:string"/>
-				<xs:element name="calories" type="xs:unsignedShort"/>
+				<xs:element name="calories" type="xs:long"/>
 				<xs:element name="image" type="xs:string"/>
+
 			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+			</xs:complexType>
+			</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
 
 </xs:schema>

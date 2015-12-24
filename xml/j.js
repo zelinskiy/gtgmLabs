@@ -1,21 +1,35 @@
 
 MYORDER=[]
 
+
+
+
 function init(){
-	/*
-	var ID = 0;
 
-	var errs = xmllint.validateXML({
-	    "xml": "lol.xml",
-		"schema": "schema.xsd"
-	}).errors
-	for (i=0;i<errs.length;i++ ){
-		error = errs[i]
-		console.log(error)
-		console.log("==============================")
 
-	}*/
+	jQuery.get("lol.xml", function(data){
+		A = new XMLSerializer().serializeToString(data.documentElement);
+		jQuery.get("schema.xsd", function(data){
+			B = new XMLSerializer().serializeToString(data.documentElement);
+			/*
+			console.log(A)
+			console.log(B)
+			*/
+
+			var Module = {
+				xml: A,
+				schema: B,
+				arguments: ["--noout", "--schema", "schema.xsd", "lol.xml"]
+			};
+
+			var xmllint = validateXML(Module);
+			console.log(xmllint)
+		}) 
+	}) 
+
+
 }
+
 
 function buttonHandler(){
 
@@ -74,3 +88,45 @@ function replaceURL(obj){
 
 
 }
+
+
+
+function loadXML(fileName){
+  var xmlFile = null;
+  
+  if ("ActiveXObject" in window){
+    xmlFile = new ActiveXObject("Microsoft.XMLDOM");
+  }
+  else if(document.implementation && document.implementation.createDocument){
+    xmlFile = document.implementation.createDocument("", "", null)
+  }
+  else alert ("ERROR");
+
+  xmlFile.async = false;
+  try{
+    xmlFile.load(fileName);
+  }
+  catch(e){
+    alert("ERROR");
+  }
+
+  return(xmlFile);
+}
+
+function getStylingResult(xmlFileName, xslFileName){
+  var xmlContent = loadXML(xmlFileName);
+  var xslContent = loadXML(xslFileName);
+
+  if ("ActiveXObject" in window){return xmlContent.transformNode(xslContent)}
+
+  else if (window.XSLTProcessor){
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xslContent);
+
+    var resultDocument = xsltProcessor.transformToDocument(xmlContent);
+    var xmls = new XMLSerializer();
+    return xmls.serializeToString(resultDocument);
+  }
+
+}
+
