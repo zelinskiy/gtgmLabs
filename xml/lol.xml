@@ -9,13 +9,15 @@
 		<price>$5.95</price>
 		<description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>
 		<calories>650</calories>
+		<image>https://raw.githubusercontent.com/jhermann/Stack-O-Waffles/master/waffles.png</image>
 	</food>
 
 	<food>
-		<name>Strawberry Belgian Waffles</name>
-		<price>$7.95</price>
-		<description>Light Belgian waffles covered with strawberries and whipped cream</description>
+		<name>Omelette</name>
+		<price>$12.95</price>
+		<description>Omelette or omelet is a dish made from beaten eggs quickly cooked with butter or oil in a frying pan</description>
 		<calories>900</calories>
+		<image>http://img2.wikia.nocookie.net/__cb20121223175331/chefville/images/e/e8/Recipe-Cheddar_Omelette.png</image>
 	</food>
 
 	<food>
@@ -23,6 +25,8 @@
 		<price>$4.95</price>
 		<description>Two of our famous Waffles with plenty of real maple syrup</description>
 		<calories>650</calories>
+		<image>https://raw.githubusercontent.com/jhermann/Stack-O-Waffles/master/waffles.png</image>
+
 	</food>
 
 	<food>
@@ -30,13 +34,15 @@
 		<price>$4.95</price>
 		<description>Tea is an aromatic beverage commonly prepared by pouring hot or boiling water over cured leaves of the Camellia sinensis</description>
 		<calories>150</calories>
+		<image>http://pngimg.com/upload/cup_PNG1983.png</image>
 	</food>
 	
 	<food>
 		<name>Coffee</name>
 		<price>$3.95</price>
-		<description>Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant.</description>
+		<description>Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant</description>
 		<calories>100</calories>
+		<image>http://pngimg.com/upload/cup_PNG1994.png</image>
 	</food>
 
 

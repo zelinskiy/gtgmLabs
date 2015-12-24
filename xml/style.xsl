@@ -7,15 +7,8 @@
 
 <script>
 	
-	var ID = 0;
+	init()	
 
-	var errs = xmllint.validateXML({
-	    "xml": "lol.xml",
-		"schema": "schema.xcd"
-	}).errors
-	console.log(errs)
-
-	
 
 
 </script>
@@ -40,6 +33,11 @@
 		<xsl:value-of select="description"/>
 		<span style="font-style:italic"> (<xsl:value-of select="calories"/> calories per serving)</span>
 		</p>
+		<p>
+		<img onload="replaceURL(this)" src="https://raw.githubusercontent.com/jhermann/Stack-O-Waffles/master/waffles.png" width="100"/>
+		<span style="display:none;"><xsl:value-of select="image"/></span>
+		</p>
+
 
   </div>
 </xsl:for-each>

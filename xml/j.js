@@ -1,6 +1,22 @@
 
 MYORDER=[]
 
+function init(){
+	/*
+	var ID = 0;
+
+	var errs = xmllint.validateXML({
+	    "xml": "lol.xml",
+		"schema": "schema.xsd"
+	}).errors
+	for (i=0;i<errs.length;i++ ){
+		error = errs[i]
+		console.log(error)
+		console.log("==============================")
+
+	}*/
+}
+
 function buttonHandler(){
 
 		MYORDER=[]
@@ -48,4 +64,9 @@ function formOrder(){
 	text+= "===============\nTOTAL: \t\t$" + total.toFixed(2)
 	console.log(text)
 	alert(text)
+}
+
+function replaceURL(obj){
+	obj.src = obj.parentNode.childNodes[1].innerHTML
+
 }

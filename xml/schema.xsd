@@ -8,6 +8,7 @@
 				<xs:element name="price" type="xs:string"/>
 				<xs:element name="description" type="xs:string"/>
 				<xs:element name="calories" type="xs:unsignedShort"/>
+				<xs:element name="image" type="xs:string"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
