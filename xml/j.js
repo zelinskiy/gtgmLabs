@@ -67,6 +67,10 @@ function formOrder(){
 }
 
 function replaceURL(obj){
-	obj.src = obj.parentNode.childNodes[1].innerHTML
+	if(!obj.passed){
+		obj.src = obj.parentNode.childNodes[1].innerHTML
+		obj.passed = true
+	}
+
 
 }
