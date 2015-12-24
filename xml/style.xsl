@@ -34,7 +34,7 @@
 		<span style="font-style:italic"> (<xsl:value-of select="calories"/> calories per serving)</span>
 		</p>
 		<p>
-		<img onload="replaceURL(this)" src="https://raw.githubusercontent.com/jhermann/Stack-O-Waffles/master/waffles.png" width="100"/>
+		<img onload="replaceURL(this)" src="http://38.media.tumblr.com/599bcef548ca67d1171051d0cba7c885/tumblr_inline_naxgulp9MU1rzk7al.jpg" width="100"/>
 		<span style="display:none;"><xsl:value-of select="image"/></span>
 		</p>
 
