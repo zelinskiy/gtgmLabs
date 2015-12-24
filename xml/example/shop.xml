@@ -1,0 +1,123 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<?xml-stylesheet type = "text/xsl" href = "styles.xsl"?>
+<navMenu>
+  <titleMenu>Навигационное меню</titleMenu>
+  <tabHeader>
+    Выберите интересующие вас товары
+  </tabHeader>
+  <headers>
+    <header id = "header0">
+      <headerText>Продукты</headerText>
+    </header>
+    <header id = "header1">
+      <headerText>Напитки</headerText>
+    </header>
+    <header id = "header2">
+      <headerText>Разное</headerText>
+    </header>
+    <billHeader id = "header3">
+      <headerText>Выбранные товары</headerText>
+    </billHeader>
+  </headers>
+  <tabSheets>
+    <tabSheet id = "tabSheet0" zIndex = "0">
+      <tabString index = "0_0">
+        <checkbox/>
+        <number>1</number>
+        <goodName>Xлеб</goodName>
+        <measure>шт.</measure>
+        <price>1.65</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "0_1">
+        <checkbox/>
+        <number>2</number>
+        <goodName>Мясо</goodName>
+        <measure>кг</measure>
+        <price>25.00</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "0_2">
+        <checkbox/>
+        <number>3</number>
+        <goodName>Сыр</goodName>
+        <measure>кг</measure>
+        <price>19.80</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "0_3">
+        <checkbox/>
+        <number>4</number>
+        <goodName>Колбаса</goodName>
+        <measure>кг</measure>
+        <price>24.35</price>
+        <numberGoods/>
+      </tabString>
+    </tabSheet>
+    <tabSheet id = "tabSheet1" zIndex = "1">
+      <tabString index = "1_0">
+        <checkbox/>
+        <number>1</number>
+        <goodName>Молоко</goodName>
+        <measure>л</measure>
+        <price>3.50</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "1_1">
+        <checkbox/>
+        <number>2</number>
+        <goodName>Лимонад</goodName>
+        <measure>бутылка</measure>
+        <price>2.80</price>
+        <numberGoods/>
+      </tabString>
+    </tabSheet>
+    <tabSheet id = "tabSheet2" zIndex = "2">
+      <tabString index = "2_0">
+        <checkbox/>
+        <number>1</number>
+        <goodName>Ножницы</goodName>
+        <measure>м</measure>
+        <price>10.50</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "2_1">
+        <checkbox/>
+        <number>2</number>
+        <goodName>Бумага</goodName>
+        <measure>шт.</measure>
+        <price>1.20</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "2_2">
+        <checkbox/>
+        <number>3</number>
+        <goodName>Камень</goodName>
+        <measure>кг</measure>
+        <price>10.50</price>
+        <numberGoods/>
+      </tabString>
+      <tabString index = "2_3">
+        <checkbox/>
+        <number>4</number>
+        <goodName>Стул</goodName>
+        <measure>щт</measure>
+        <price>40.00</price>
+        <numberGoods/>
+      </tabString>
+    </tabSheet>
+    <billSheet id = "tabSheet3">
+      <billStrings>
+        <billStringHdr>Наименование</billStringHdr>
+        <billStringHdr>Мера</billStringHdr>
+        <billStringHdr>Цена</billStringHdr>
+        <billStringHdr>Количество</billStringHdr>
+        <billStringHdr>Общая цена</billStringHdr>
+      </billStrings>
+      <priceForAll>Общая сумма: </priceForAll>
+      <button id = "delBtn">Удалить товар</button>
+      <button id = "buyBtn">Совершить покупку</button>
+    </billSheet>
+  </tabSheets>
+
+</navMenu>

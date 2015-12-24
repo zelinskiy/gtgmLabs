@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<breakfast_menu>
+
+	<food>
+		<name>Belgian Waffles</name>
+		<price>$5.95</price>
+		<description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>
+		<calories>650</calories>
+	</food>
+
+	<food>
+		<name>Strawberry Belgian Waffles</name>
+		<price>$7.95</price>
+		<description>Light Belgian waffles covered with strawberries and whipped cream</description>
+		<calories>900</calories>
+	</food>
+
+	<food>
+		<name>Waffles</name>
+		<price>$4.95</price>
+		<description>Two of our famous Waffles with plenty of real maple syrup</description>
+		<calories>650</calories>
+	</food>
+
+	<food>
+		<name>Tea</name>
+		<price>$4.95</price>
+		<description>Tea is an aromatic beverage commonly prepared by pouring hot or boiling water over cured leaves of the Camellia sinensis</description>
+		<calories>150</calories>
+	</food>
+	
+	<food>
+		<name>Coffee</name>
+		<price>$3.95</price>
+		<description>Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant.</description>
+		<calories>100</calories>
+	</food>
+
+
+</breakfast_menu> 
